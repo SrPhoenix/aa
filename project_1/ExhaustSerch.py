@@ -24,7 +24,7 @@ def combinations(lst, r):
         return [[]]
     if not lst:
         return []
-    operations_counter+= 4                                                                          # +2 operations of comparison ( else ) + 2 list concatenation 
+    operations_counter+= 2                                                                          # +2 operations of comparison ( else ) + 2 list concatenation 
     return combinations(lst[1:], r) + [item + [lst[0]] for item in combinations(lst[1:], r - 1)]    #+ 2 list concatenation
 
 def find_minimum_edge_dominating_set(graph):
@@ -37,7 +37,7 @@ def find_minimum_edge_dominating_set(graph):
         for candidate_set in combinations(list(graph.edges()), r):
             operations_counter+=1               # +1 operations of comparison ( is_edge_dominating_set ) 
             if is_edge_dominating_set(graph, candidate_set):
-                operations_counter+=1           # +1 operations of comparison ( len(candidate_set) < min_set_size ) 
+                operations_counter+=2           # +1 operations of comparison ( len(candidate_set) < min_set_size ) 
                 if len(candidate_set) < min_set_size:
                     min_set_size = len(candidate_set)
                     min_edge_dominating_set = set(candidate_set)
@@ -47,8 +47,8 @@ def find_minimum_edge_dominating_set(graph):
 if __name__ == '__main__':
 
     graphs = load_graphs()
-    results_file = open("results/ExhaustSearch.txt", "w")
-    csv_file = open("report/ExhaustSearch.csv", "w")
+    results_file = open("results/ExhaustSearchGPT.txt", "w")
+    csv_file = open("report/ExhaustSearchGPT.csv", "w")
     results_file.write(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Operations':<15} {'Time':<13} {'Dominant Set'}\n")
     csv_file.write("N Nodes,Vertices,Edges,Operations,Time\n")
     print(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Operations':<15} {'Time':<13} {'Dominant Set'}\n")

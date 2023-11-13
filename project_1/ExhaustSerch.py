@@ -3,16 +3,13 @@ import time
 
 
 operations_counter = 0
-attempts_counter = 0
 
 
 def is_edge_dominating_set(graph, candidate_set):
     global operations_counter
-    global attempts_counter
     for edge in graph.edges():
-        attempts_counter+=1                     # +1 operations of comparison ( else ) 
+        operations_counter+=1                     # +1 operations of comparison ( else ) 
         for dominat_edge in candidate_set:
-            attempts_counter+=1      
             operations_counter += 1             # +1 operations of comparison ( graph.has_edge(node,dominat_node) ) 
             if edge in graph.edges(dominat_edge):
                 break
@@ -23,25 +20,21 @@ def is_edge_dominating_set(graph, candidate_set):
 
 def combinations(lst, r):
     global operations_counter
-    global attempts_counter
     if r == 0:
         return [[]]
     if not lst:
         return []
     operations_counter+= 4                                                                          # +2 operations of comparison ( else ) + 2 list concatenation 
-    attempts_counter+=1      
     return combinations(lst[1:], r) + [item + [lst[0]] for item in combinations(lst[1:], r - 1)]    #+ 2 list concatenation
 
 def find_minimum_edge_dominating_set(graph):
     global operations_counter
-    global attempts_counter
     n = len(graph.edges())+1
     min_set_size = n
     min_edge_dominating_set = set()
 
     for r in range(1, n):
         for candidate_set in combinations(list(graph.edges()), r):
-            attempts_counter+=1      
             operations_counter+=1               # +1 operations of comparison ( is_edge_dominating_set ) 
             if is_edge_dominating_set(graph, candidate_set):
                 operations_counter+=1           # +1 operations of comparison ( len(candidate_set) < min_set_size ) 
@@ -55,22 +48,22 @@ if __name__ == '__main__':
 
     graphs = load_graphs()
     results_file = open("results/ExhaustSearch.txt", "w")
-    csv_file = open("report/ExhaustCSV.txt", "w")
-    results_file.write(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Operations':<15} {'Attempts':<12} {'Time':<13} {'Dominant Set'}\n")
-    csv_file.write("N Nodes,Vertices,Edges,Operations,Attempts,Time,Dominant Set\n")
-    print(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Operations':<15} {'Attempts':<12} {'Time':<13} {'Dominant Set'}\n")
+    csv_file = open("report/ExhaustSearch.csv", "w")
+    results_file.write(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Operations':<15} {'Time':<13} {'Dominant Set'}\n")
+    csv_file.write("N Nodes,Vertices,Edges,Operations,Time\n")
+    print(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Operations':<15} {'Time':<13} {'Dominant Set'}\n")
     for graph in graphs:
 
-        n_vertices = len(list(remove_vertices_without_edges(graph)))
+        n_vertices = len(graph.nodes)
         n_edges = len(graph.edges())
 
         start = time.time()
         dominating_set = find_minimum_edge_dominating_set(graph)
         end = time.time()
  
-        print(f"{len(graph.nodes):<12} {n_vertices:<12} {n_edges:<10} {operations_counter:<15} {attempts_counter:<12} {end - start:.4f}        {str(dominating_set)}\n")
-        results_file.write(f"{len(graph.nodes):<12} {n_vertices:<12} {n_edges:<10} {operations_counter:<15} {attempts_counter:<12} {end - start:.4f}        {str(dominating_set)}\n")
-        csv_file.write(f"{len(graph.nodes)},{n_vertices},{n_edges},{operations_counter},{attempts_counter},{end - start:.4f},{str(dominating_set)}\n")
+        print(f"{len(graph.nodes):<12} {n_vertices:<12} {n_edges:<10} {operations_counter:<15} {end - start:.4f}        {str(dominating_set)}\n")
+        results_file.write(f"{len(graph.nodes):<12} {n_vertices:<12} {n_edges:<10} {operations_counter:<15} {end - start:.4f}        {str(dominating_set)}\n")
+        csv_file.write(f"{len(graph.nodes)},{n_vertices},{n_edges},{operations_counter},{end - start:.4f}\n")
 
         # vertices = graph.subgraph([v for v in graph])
         # nodePos = nx.circular_layout(graph)

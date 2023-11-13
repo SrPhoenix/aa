@@ -35,7 +35,6 @@ def generate_vertices_edges(n_vertices, percentage):
             edge = (vertices[vertice1], vertices[vertice2])
             edges.append(edge)
 
-
     return vertices, edges
 
 

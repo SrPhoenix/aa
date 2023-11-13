@@ -35,6 +35,7 @@ def generate_vertices_edges(n_vertices, percentage):
             edge = (vertices[vertice1], vertices[vertice2])
             edges.append(edge)
 
+
     return vertices, edges
 
 
@@ -69,7 +70,7 @@ def load_graphs():
     n_graphs = 384
 
     for i in range(n_graphs):
-        with open("graph/graph_{}.json".format(i), "r") as f:
+        with open("graphs/graph_{}.json".format(i), "r") as f:
             graph_data = json.loads(f.read())
 
             graphs.append(nx.node_link_graph(graph_data))

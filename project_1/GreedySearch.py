@@ -38,30 +38,31 @@ def greedy_edge_dominating_set(graph):
     return operations_counter, attempts_counter, dominating_set
 
 
+
 if __name__ == '__main__':
 
     graphs = load_graphs()
-    results_file = open("results/GreedySerch.txt", "w")
-    csv_file = open("report/GreedyCSV.txt", "w")
-    results_file.write(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Operations':<15} {'Attempts':<12} {'Time':<13} {'Dominant Set'}\n")
-    csv_file.write("N Nodes,Vertices,Edges,Operations,Attempts,Time,Dominant Set\n")
-    print(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Operations':<15} {'Attempts':<12} {'Time':<13} {'Dominant Set'}\n")
+    results_file = open("results/GreedySearch.txt", "w")
+    csv_file = open("report/GreedySearch.csv", "w")
+    results_file.write(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Operations':<15} {'Time':<13} {'Dominant Set'}\n")
+    csv_file.write("N Nodes,Vertices,Edges,Operations,Time\n")
+    print(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Operations':<15} {'Time':<13} {'Dominant Set'}\n")
     for graph in graphs:
 
-        n_vertices = len(list(remove_vertices_without_edges(graph)))
+        n_vertices = len(graph.nodes)
         n_edges = len(graph.edges())
 
 
         start = time.time()
-        operations_counter, attempts_counter, dominating_set = greedy_edge_dominating_set(graph)
+        operations_counter,  dominating_set = greedy_edge_dominating_set(graph)
         end = time.time()
 
 
 
 
-        print(f"{len(graph.nodes):<12} {n_vertices:<12} {n_edges:<10} {operations_counter:<15} {attempts_counter:<12} {end - start:.4f}        {str(dominating_set)}\n")
-        results_file.write(f"{len(graph.nodes):<12} {n_vertices:<12} {n_edges:<10} {operations_counter:<15} {attempts_counter:<12} {end - start:.4f}        {str(dominating_set)}\n")
-        csv_file.write(f"{len(graph.nodes)},{n_vertices},{n_edges},{operations_counter},{attempts_counter},{end - start:.4f},{str(dominating_set)}\n")
+        print(f"{len(graph.nodes):<12} {n_vertices:<12} {n_edges:<10} {operations_counter:<15} {end - start:.4f}        {str(dominating_set)}\n")
+        results_file.write(f"{len(graph.nodes):<12} {n_vertices:<12} {n_edges:<10} {operations_counter:<15} {end - start:.4f}        {str(dominating_set)}\n")
+        csv_file.write(f"{len(graph.nodes)},{n_vertices},{n_edges},{operations_counter},{end - start:.4f}\n")
 
         # vertices = graph.subgraph([v for v in graph])
         # nodePos = nx.circular_layout(graph)

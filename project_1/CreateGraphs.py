@@ -1,6 +1,6 @@
 from graph_utils import *
 
-def generate_graphs(v=6):
+def CreateGraphs(v=100):
     graph_id = 0
 
     for n_vertices in range(5, v+1):
@@ -17,14 +17,12 @@ def generate_graphs(v=6):
 
             graph = draw_graph(vertices, edges)
             graph_data = nx.node_link_data(graph)
-            # graph_data = nx.adjacency_data(graph)
-
+            print(graph_data)
             # with open("graphs/graph_{}.json".format(graph_id), "w") as f:
             #     f.write(json.dumps(graph_data))
 
             graph_id += 1
-
+        break
 
 if __name__ == '__main__':
-    # Generate graphs once
-    generate_graphs()
+    CreateGraphs()

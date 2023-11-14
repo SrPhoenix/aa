@@ -10,9 +10,7 @@ def is_edge_dominating_set(graph, candidate_set):
     global operations_counter
     global attempts_counter
     for edge in graph.edges():
-        attempts_counter+=1                     # +1 operations of comparison ( else ) 
         for dominat_edge in candidate_set:
-            attempts_counter+=1      
             operations_counter += 1             # +1 operations of comparison ( graph.has_edge(node,dominat_node) ) 
             if edge in graph.edges(dominat_edge):
                 break
@@ -29,7 +27,6 @@ def combinations(lst, r):
     if not lst:
         return []
     operations_counter+= 4                                                                          # +2 operations of comparison ( else ) + 2 list concatenation 
-    attempts_counter+=1      
     return combinations(lst[1:], r) + [item + [lst[0]] for item in combinations(lst[1:], r - 1)]    #+ 2 list concatenation
 
 def find_minimum_edge_dominating_set(graph):

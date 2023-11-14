@@ -19,22 +19,20 @@ def greedy_edge_dominating_set(graph):
         
         # Iterate over the remaining edges and find the edge that covers the most new vertices
         for edge in remaining_edges:
-            attempts_counter += 1
-            e_neighbors = len(set(graph.edges(edge)) - dominating_set)           # +1 operations accour (set difference)
+            e_neighbors = len(set(graph.edges(edge)) - dominating_set)          
 
-            operations_counter += 2                 #List diff and comparison
-            if e_neighbors > max_neighbors:                                             # +1 operations accour (comparison)
+            if e_neighbors > max_neighbors:                                             
                 best_edge = edge
                 max_neighbors = e_neighbors
 
-        operations_counter += 2                 #Add element to dominating_set and remove element from remaining_edges
         # Add the best edge to the dominating set and remove covered vertices and edges
+        operations_counter += 1                
+        attempts_counter += 1                
         dominating_set.add(best_edge)
 
 
         remaining_edges.discard(tuple(sorted(tuple(best_edge))))
         for edge in graph.edges(best_edge):
-            operations_counter += 1                 #remove element from remaining_edges
             remaining_edges.discard(tuple(sorted(tuple(edge))))
 
     return operations_counter, attempts_counter, dominating_set

@@ -20,14 +20,13 @@ def greedy_edge_dominating_set(graph):
         # Iterate over the remaining edges and find the edge that covers the most new vertices
         for edge in remaining_edges:
             e_neighbors = len(set(graph.edges(edge)) - dominating_set)          
-
+            attempts_counter += 1                
             if e_neighbors > max_neighbors:                                             
                 best_edge = edge
                 max_neighbors = e_neighbors
 
         # Add the best edge to the dominating set and remove covered vertices and edges
         operations_counter += 1                
-        attempts_counter += 1                
         dominating_set.add(best_edge)
 
 
@@ -44,9 +43,9 @@ if __name__ == '__main__':
     graphs = load_graphs()
     results_file = open("results/GreedySearch.txt", "w")
     csv_file = open("report/GreedySearch.csv", "w")
-    results_file.write(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Operations':<15} {'Time':<13} {'Dominant Set'}\n")
-    csv_file.write("N Nodes,Vertices,Edges,Operations,Time\n")
-    print(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Operations':<15} {'Time':<13} {'Dominant Set'}\n")
+    results_file.write(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Attemps':<15} {'Operations':<15} {'Time':<13} {'Dominant Set'}\n")
+    csv_file.write("N Nodes,Vertices,Edges,Attemps,Operations,Time\n")
+    print(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Attemps':<15}{'Operations':<15} {'Time':<13} {'Dominant Set'}\n")
     for graph in graphs:
 
         n_vertices = len(graph.nodes)
@@ -54,15 +53,15 @@ if __name__ == '__main__':
 
 
         start = time.time()
-        operations_counter,  dominating_set = greedy_edge_dominating_set(graph)
+        operations_counter,  attempts_counter, dominating_set = greedy_edge_dominating_set(graph)
         end = time.time()
 
 
 
 
-        print(f"{len(graph.nodes):<12} {n_vertices:<12} {n_edges:<10} {operations_counter:<15} {end - start:.4f}        {str(dominating_set)}\n")
-        results_file.write(f"{len(graph.nodes):<12} {n_vertices:<12} {n_edges:<10} {operations_counter:<15} {end - start:.4f}        {str(dominating_set)}\n")
-        csv_file.write(f"{len(graph.nodes)},{n_vertices},{n_edges},{operations_counter},{end - start:.4f}\n")
+        print(f"{len(graph.nodes):<12} {n_vertices:<12} {n_edges:<10} {attempts_counter:<15} {operations_counter:<15} {end - start:.4f}        {str(dominating_set)}\n")
+        results_file.write(f"{len(graph.nodes):<12} {n_vertices:<12} {n_edges:<10} {attempts_counter:<15} {operations_counter:<15} {end - start:.4f}        {str(dominating_set)}\n")
+        csv_file.write(f"{len(graph.nodes)},{n_vertices},{n_edges},{operations_counter},{attempts_counter},{end - start:.4f}\n")
 
         # vertices = graph.subgraph([v for v in graph])
         # nodePos = nx.circular_layout(graph)

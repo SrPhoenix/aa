@@ -7,11 +7,8 @@ attempts_counter = 0
 
 
 def is_edge_dominating_set(graph, candidate_set):
-    global operations_counter
-    global attempts_counter
     for edge in graph.edges():
         for dominat_edge in candidate_set:
-            operations_counter += 1             # +1 operations of comparison ( graph.has_edge(node,dominat_node) ) 
             if edge in graph.edges(dominat_edge):
                 break
         else:
@@ -26,7 +23,6 @@ def combinations(lst, r):
         return [[]]
     if not lst:
         return []
-    operations_counter+= 4                                                                          # +2 operations of comparison ( else ) + 2 list concatenation 
     return combinations(lst[1:], r) + [item + [lst[0]] for item in combinations(lst[1:], r - 1)]    #+ 2 list concatenation
 
 def find_minimum_edge_dominating_set(graph):
@@ -53,11 +49,11 @@ def find_minimum_edge_dominating_set(graph):
 if __name__ == '__main__':
 
     graphs = load_graphs()
-    results_file = open("results/ExhaustSearchGPT.txt", "w")
-    csv_file = open("report/ExhaustSearchGPT.csv", "w")
-    results_file.write(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Operations':<15} {'Time':<13} {'Dominant Set'}\n")
-    csv_file.write("N Nodes,Vertices,Edges,Operations,Time\n")
-    print(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Operations':<15} {'Time':<13} {'Dominant Set'}\n")
+    results_file = open("results/ExhaustSearch.txt", "w")
+    csv_file = open("report/ExhaustSearch.csv", "w")
+    results_file.write(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Attemps':<15} {'Operations':<15} {'Time':<13} {'Dominant Set'}\n")
+    csv_file.write("N Nodes,Vertices,Edges,Attemps,Operations,Time\n")
+    print(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Attemps':<15}{'Operations':<15} {'Time':<13} {'Dominant Set'}\n")
     for graph in graphs:
 
         n_vertices = len(graph.nodes)
@@ -67,9 +63,9 @@ if __name__ == '__main__':
         dominating_set = find_minimum_edge_dominating_set(graph)
         end = time.time()
  
-        print(f"{len(graph.nodes):<12} {n_vertices:<12} {n_edges:<10} {operations_counter:<15} {end - start:.4f}        {str(dominating_set)}\n")
-        results_file.write(f"{len(graph.nodes):<12} {n_vertices:<12} {n_edges:<10} {operations_counter:<15} {end - start:.4f}        {str(dominating_set)}\n")
-        csv_file.write(f"{len(graph.nodes)},{n_vertices},{n_edges},{operations_counter},{end - start:.4f}\n")
+        print(f"{len(graph.nodes):<12} {n_vertices:<12} {n_edges:<10} {attempts_counter:<15} {operations_counter:<15} {end - start:.4f}        {str(dominating_set)}\n")
+        results_file.write(f"{len(graph.nodes):<12} {n_vertices:<12} {n_edges:<10} {attempts_counter:<15} {operations_counter:<15} {end - start:.4f}        {str(dominating_set)}\n")
+        csv_file.write(f"{len(graph.nodes)},{n_vertices},{n_edges},{operations_counter},{attempts_counter},{end - start:.4f}\n")
 
         # vertices = graph.subgraph([v for v in graph])
         # nodePos = nx.circular_layout(graph)

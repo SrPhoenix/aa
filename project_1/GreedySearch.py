@@ -42,7 +42,7 @@ if __name__ == '__main__':
 
     graphs = load_graphs()
     results_file = open("results/GreedySearch.txt", "w")
-    csv_file = open("report/GreedySearch.csv", "w")
+    csv_file = open("results/GreedySearch.csv", "w")
     results_file.write(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Attemps':<15} {'Operations':<15} {'Time':<13} {'Dominant Set'}\n")
     csv_file.write("N Nodes,Vertices,Edges,Attemps,Operations,Time\n")
     print(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Attemps':<15}{'Operations':<15} {'Time':<13} {'Dominant Set'}\n")

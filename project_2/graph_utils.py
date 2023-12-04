@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 import json
-
+import os
 
 
 def generate_vertices_edges(n_vertices, percentage):
@@ -76,4 +76,33 @@ def load_graphs():
 
     return graphs
 
+
+def load_SW_graphs():
+
+    folder_path = "SW_ALGUNS_GRAFOS"
+    graphs_files = [f for f in os.listdir(folder_path) if os.path.isfile( os.path.join(folder_path, f)) ]
+    # graphs_files = ["SWmediumG.txt"]
+    graphs = []
+    for file in graphs_files[::-1]:
+        with open(folder_path + "/" + file, "r") as f:
+            lines = f.readlines()
+            if lines[0][0] != "0" or lines[1][0] != "0":
+                continue
+            print(file)
+            edges = []
+            vertices = lines[3]
+            for line in lines[4:]:
+                edge = line.strip().split(" ")
+                edge_clean = [int(edge[0]), int(edge[1])]
+                edges.append(edge_clean)
+
+            G = nx.Graph()
+            for vertex in range(int(vertices)):
+                G.add_node(str(vertex))
+
+            for edge in edges:
+                G.add_edge(str(edge[0]),str(edge[1]))
+            graphs.append(G)
+
+    return graphs
 

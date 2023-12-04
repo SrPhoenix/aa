@@ -63,12 +63,9 @@ def local_search(graph, set_size, tried_solutions, max_iterations_without_improv
         solution = solution[0]   
     return solution , basic_operations
 
-
-if __name__ == '__main__':
-
-    graphs = load_graphs()
-    results_file = open("results/RandomSearch.txt", "w")
-    csv_file = open("results/RandomSearch.csv", "w")
+def run( graphs ,path ):
+    results_file = open("results/"+path+".txt", "w")
+    csv_file = open("results/"+path+".csv", "w")
     results_file.write(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Attemps':<15} {'Operations':<15} {'Time':<13} {'Dominant Set'}\n")
     csv_file.write("N Nodes,Vertices,Edges,Attemps,Operations,Time\n")
     print(f"{'N Nodes':<12} {'Vertices':<12} {'Edges':<10} {'Attemps':<15}{'Operations':<15} {'Time':<13} {'Dominant Set'}\n")
@@ -95,3 +92,11 @@ if __name__ == '__main__':
 
     results_file.close()
     csv_file.close()
+
+if __name__ == '__main__':
+
+    # graphs = load_graphs()
+    # run(graphs, "RandomSearch")
+    graphsSW = load_SW_graphs()
+    run(graphsSW, "RandomSearchSW")
+    

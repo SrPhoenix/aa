@@ -7,7 +7,7 @@ import math
 # skip_func = lambda x: x%n != 0
 
 # Load the dataset into a Pandas DataFrame
-df = pd.read_csv("results/GreedySearch.csv") 
+df = pd.read_csv("results/RandomSearch.csv") 
 
 # Extract the date and close price columns
 vertices = df['Vertices']

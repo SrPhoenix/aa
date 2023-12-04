@@ -95,8 +95,8 @@ def run( graphs ,path ):
 
 if __name__ == '__main__':
 
-    # graphs = load_graphs()
-    # run(graphs, "RandomSearch")
+    graphs = load_graphs()
+    run(graphs, "RandomSearch")
     graphsSW = load_SW_graphs()
     run(graphsSW, "RandomSearchSW")
     

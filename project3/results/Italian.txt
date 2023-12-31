@@ -1,0 +1,24 @@
+ItalianBook1.txt
+e: 80632 occurrences
+i: 76202 occurrences
+o: 58132 occurrences
+a: 54801 occurrences
+n: 51055 occurrences
+
+
+ItalianBook2.txt
+a: 77874 occurrences
+e: 70080 occurrences
+i: 59011 occurrences
+o: 54054 occurrences
+l: 41391 occurrences
+
+
+ItalianBook3.txt
+a: 52047 occurrences
+e: 49670 occurrences
+i: 49419 occurrences
+o: 41243 occurrences
+l: 32137 occurrences
+
+

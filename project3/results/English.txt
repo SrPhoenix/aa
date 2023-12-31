@@ -1,0 +1,24 @@
+EnglishBook1.txt
+e: 67910 occurrences
+t: 52951 occurrences
+a: 42258 occurrences
+o: 41501 occurrences
+n: 41376 occurrences
+
+
+EnglishBook2.txt
+e: 170034 occurrences
+t: 124517 occurrences
+o: 105220 occurrences
+a: 99107 occurrences
+i: 91663 occurrences
+
+
+EnglishBook3.txt
+e: 44243 occurrences
+t: 32267 occurrences
+a: 27210 occurrences
+o: 25803 occurrences
+h: 23325 occurrences
+
+

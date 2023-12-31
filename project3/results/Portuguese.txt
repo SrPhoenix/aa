@@ -1,0 +1,24 @@
+PortugueseBook1.txt
+a: 53087 occurrences
+e: 43115 occurrences
+o: 36887 occurrences
+s: 30318 occurrences
+r: 23894 occurrences
+
+
+PortugueseBook2.txt
+a: 33976 occurrences
+e: 33427 occurrences
+o: 28194 occurrences
+s: 20393 occurrences
+r: 17518 occurrences
+
+
+PortugueseBook3.txt
+a: 53824 occurrences
+e: 46770 occurrences
+o: 40036 occurrences
+s: 31126 occurrences
+r: 26803 occurrences
+
+

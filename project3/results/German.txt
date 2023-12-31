@@ -1,0 +1,24 @@
+GermanBook.txt
+e: 134096 occurrences
+n: 82671 occurrences
+i: 60406 occurrences
+r: 56312 occurrences
+s: 49483 occurrences
+
+
+GermanBook2.txt
+e: 86613 occurrences
+n: 50796 occurrences
+i: 39409 occurrences
+r: 34965 occurrences
+s: 31190 occurrences
+
+
+GermanBook3.txt
+e: 116677 occurrences
+n: 70480 occurrences
+i: 51123 occurrences
+r: 47299 occurrences
+s: 40542 occurrences
+
+

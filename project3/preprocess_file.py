@@ -11,7 +11,7 @@ def remove_stopwords_and_punctuation(text, language):
     stop_words = set(stopwords.words(language)) #'english'
     punctuation = set(string.punctuation)
     words = word_tokenize(text)
-    filtered_words = [word for word in words if word.lower() not in stop_words and word not in punctuation]
+    filtered_words = [word for word in words if word.isalnum() and  word.lower() not in stop_words and word not in punctuation]
     return ' '.join(filtered_words)
 
 def remove_stopwords_and_punctuation_from_file(input_file, output_file, language):

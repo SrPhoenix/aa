@@ -34,7 +34,7 @@ def approximate_counter(processedFile):
 
 if __name__ == "__main__":
     # Number of trials
-    numTrials = 10000
+    numTrials = 15000
 
     # Set seed with nMec
     np.random.seed(98515)
@@ -46,7 +46,7 @@ if __name__ == "__main__":
     # Language o the books 
     languages = ["german", "finnish","dutch","french","english"]
 
-    for i in range(pathFiles):
+    for i in range(len(pathFiles)):
         book = pathFiles[i]
         processedFile = process_file(pathFiles[i],languages[i])
 

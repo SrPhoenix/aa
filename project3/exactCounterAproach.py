@@ -1,34 +1,34 @@
 from collections import Counter
 import os
 import time
+from  preprocess_file import process_file
 
 
-def most_frequent_letters_identifier(file_path):
-    with open(file_path, 'r', encoding='utf-8') as file:
-        text = file.read()
-
+def most_frequent_letters_identifier(processedFile):
     # Count occurrences of each letter
-    letter_counts = Counter(c for c in text)
+    letter_counts = Counter(c for c in processedFile)
 
     # Return the most frequent letters
     return sorted(letter_counts.items(), key=lambda item: item[1], reverse=True)
 
 if __name__ == "__main__":
-    folder_path = "processed"
-    path_files = [f for f in os.listdir(folder_path) if os.path.isfile( os.path.join(folder_path, f)) ]
-    languages = {}
-    for file in path_files:
-        analysis_file = open("analysis/exactCounter/"+file[:-4]+".txt", "w", encoding="utf-8")    
+    # Title o the books 
+    pathFiles = ["Das Bildnis des Dorian Gray", "Dorian Grayn muotokuva", "Het portret van Dorian Gray", "Le portrait de Dorian Gray","The Picture of Dorian Gray"] 
 
-        file_path = folder_path+"/"+file
+    # Language o the books 
+    languages = ["german", "finnish","dutch","french","english"]
+    for i in range(len(pathFiles)):
+        book = pathFiles[i][:-4]
+        print(book)
+        processedFile = process_file(pathFiles[i],languages[i])
+        analysis_file = open("analysis/exactCounter/"+book+ ".txt", "w", encoding="utf-8")    
+
         start = time.time()
-        result = most_frequent_letters_identifier(file_path)
+        result = most_frequent_letters_identifier(processedFile)
         end = time.time()
         
-        analysis_file.write(f"Size (kb): {os.stat(file_path).st_size / 1024:<12} \n")
         analysis_file.write(f"Time: {end - start:.4f} \n\n")
 
-        print(f"\nSize (kb): {os.stat(file_path).st_size / 1024:<12}")
         print(f"Time: {end - start:.4f}\n")
 
         analysis_file.write(f"{'letter':<8} {'Ocurrences':<12} \n")

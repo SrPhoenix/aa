@@ -43,12 +43,12 @@ if __name__ == "__main__":
     # Language o the books 
     languages = ["german", "finnish","dutch","french","english"]
 
-    for i in range(pathFiles):
+    for i in range(len(pathFiles)):
         book = pathFiles[i]
         processedFile = process_file(pathFiles[i],languages[i])
 
-        results = open("results/DecreasingProbabilityCounter/" + book + ".txt", "w", encoding="utf-8")
-        analysis = open("analysis/DecreasingProbabilityCounter/" + book + ".txt", "w", encoding="utf-8")
+        results = open("results/SpaceSavingCounter/" + book + ".txt", "w", encoding="utf-8")
+        analysis = open("analysis/SpaceSavingCounter/" + book + ".txt", "w", encoding="utf-8")
         avgTime = 0
 
         for k in all_k:
@@ -61,7 +61,7 @@ if __name__ == "__main__":
             # store the counters
             results.write(json.dumps(result) + "\n")
 
-            analysis.write(f'{"title":<40} {"K": 5}{"Processing Time" :<25}\n')
+            analysis.write(f"{'title':<40} {'K': <5} {'Processing Time' :<25}\n")
 
             # Store processing time
             analysis.write(f'{book + ":":<40} {k: 5} {processingTimer :<25}\n')

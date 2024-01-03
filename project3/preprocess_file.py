@@ -17,7 +17,7 @@ def remove_stopwords_and_punctuation(text, language):
 def process_file(input_file,  language):
 
     analysis_file = open("process/SpaceSavingCounter/"+input_file+".txt", "w", encoding="utf-8")    
-    with open("books/"+input_file, 'r', encoding='utf-8') as file:
+    with open("books/"+input_file+".txt", 'r', encoding='utf-8') as file:
         text = file.read()
         
         # length of the text file before processing it

@@ -1,0 +1,6 @@
+title                                    K     Processing Time          
+Le portrait de Dorian Gray:                  3 0.05117654800415039      
+title                                    K     Processing Time          
+Le portrait de Dorian Gray:                  5 0.05218100547790527      
+title                                    K     Processing Time          
+Le portrait de Dorian Gray:                 10 0.049170732498168945     

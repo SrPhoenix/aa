@@ -1,0 +1,6 @@
+title                                    K     Processing Time          
+Dorian Grayn muotokuva:                      3 0.06321930885314941      
+title                                    K     Processing Time          
+Dorian Grayn muotokuva:                      5 0.0682363510131836       
+title                                    K     Processing Time          
+Dorian Grayn muotokuva:                     10 0.06422305107116699      

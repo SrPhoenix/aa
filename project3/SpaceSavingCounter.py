@@ -1,6 +1,9 @@
 from collections import defaultdict
 import os
 import time
+from  preprocess_file import process_file
+import json
+
 
 class SpaceSavingCounter:
     def __init__(self, k):
@@ -19,52 +22,49 @@ class SpaceSavingCounter:
                 if self.counts[key] == 0:
                     del self.counts[key]
 
-    def process_file(self,file_path):
-        with open(file_path, 'r') as file:
-            text = file.read()
-            for char in text:
-                self.process_character(char)
+    def process_file(self,processedFile):
 
-    def get_top_k(self):
-        return sorted(self.counts.items(), key=lambda item: item[1], reverse=True)
+        startingTime = time.time()
+
+        for char in processedFile:
+            self.process_character(char)
+
+        processingTimer = time.time() - startingTime
+
+        return sorted(self.counts.items(), key=lambda item: item[1], reverse=True), processingTimer
 
 if __name__ == "__main__":
-    k = 5  
-    space_saving_counter = SpaceSavingCounter(k)
-    folder_path = "processed"
-    path_files = [f for f in os.listdir(folder_path) if os.path.isfile( os.path.join(folder_path, f)) ]
-    languages = {}
-    for file in path_files:
-        analysis_file = open("analysis/SpaceSavingCounter/"+file[:-4]+".txt", "w", encoding="utf-8")    
-        csv_file = open("csv/SpaceSavingCounter/"+file[:-4]+".csv", "w", encoding="utf-8")    
-        analysis_file.write(f"{'letter':<8} {'Attemps':<15} {'Operations':<15} {'Time':<13}\n")
-        csv_file.write(f"{'letter':<8} {'Attemps':<15} {'Operations':<15} {'Time':<13}\n")
-        print(f"{'Book':<20} {'Attemps':<15} {'Operations':<15} {'Time':<13}\n")
-        file_path = folder_path+"/"+file
-        start = time.time()
-        space_saving_counter.process_file(file_path)
-        end = time.time()
+    # Set all possible k
+    all_k = [3, 5, 10]
 
-        result = space_saving_counter.get_top_k()
+    # Title o the books 
+    pathFiles = ["Das Bildnis des Dorian Gray", "Dorian Grayn muotokuva", "Het portret van Dorian Gray", "Le portrait de Dorian Gray","The Picture of Dorian Gray"] 
 
-        analysis_file.write(f"{file:<20} {os.stat(file_path).st_size / 1024:<12} {'Attemps':<15} {'Operations':<15} {end - start:.4f}\n")
+    # Language o the books 
+    languages = ["german", "finnish","dutch","french","english"]
 
-        # print(f"The most frequent letters are:")
-        language = file.split("Book")[0]
-        print(language)
-        if language in languages:
-            languages[language][file] = result
-        else:
-            languages[language] = {file : result}
-        # results_file.write(f"{letter}: {count} occurrences\n")
-        analysis_file.close()
+    for i in range(pathFiles):
+        book = pathFiles[i]
+        processedFile = process_file(pathFiles[i],languages[i])
 
-    # for language in languages.keys():
-    #     results_file = open("results/"+language+".txt", "w")
-    #     for file in languages[language]:
-    #         results_file.write(file+"\n")
-    #         for letter, count in languages[language][file]:
-    #             print(f"{letter}: {count} occurrences")
-    #             results_file.write(f"{letter}: {count} occurrences\n")
-    #         results_file.write("\n\n")
-    #     results_file.close()
+        results = open("results/DecreasingProbabilityCounter/" + book + ".txt", "w", encoding="utf-8")
+        analysis = open("analysis/DecreasingProbabilityCounter/" + book + ".txt", "w", encoding="utf-8")
+        avgTime = 0
+
+        for k in all_k:
+
+            space_saving_counter = SpaceSavingCounter(k)
+
+            # get approximate counters
+            result, processingTimer = space_saving_counter.process_file(processedFile)
+
+            # store the counters
+            results.write(json.dumps(result) + "\n")
+
+            analysis.write(f'{"title":<40} {"K": 5}{"Processing Time" :<25}\n')
+
+            # Store processing time
+            analysis.write(f'{book + ":":<40} {k: 5} {processingTimer :<25}\n')
+
+        analysis.close()
+        results.close()

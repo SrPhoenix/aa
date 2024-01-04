@@ -14,9 +14,9 @@ def remove_stopwords_and_punctuation(text, language):
     filtered_words = [word for word in words if word.isalpha() and  word.lower() not in stop_words and word not in punctuation]
     return ' '.join(filtered_words)
 
-def process_file(input_file,  language):
+def process_file(input_file,  language, folder_name):
 
-    analysis_file = open("process/SpaceSavingCounter/"+input_file+".txt", "w", encoding="utf-8")    
+    analysis_file = open("process/"+folder_name+"/"+input_file+".txt", "w", encoding="utf-8")    
     with open("books/"+input_file+".txt", 'r', encoding='utf-8') as file:
         text = file.read()
         

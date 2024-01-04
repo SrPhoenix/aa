@@ -1,0 +1,13 @@
+Top 4 letters (Exact Counter):
+ : 35266
+E: 26108
+A: 15057
+R: 14816
+
+Top 4 letters (Space Saving Counter):
+E: 1
+N: 1
+D: 1
+
+Accurate letters: 1/4
+Accuracy: 25.0%

@@ -48,7 +48,7 @@ if __name__ == "__main__":
 
     for i in range(len(pathFiles)):
         book = pathFiles[i]
-        processedFile = process_file(pathFiles[i],languages[i])
+        processedFile = process_file(pathFiles[i],languages[i],"DecreasingProbabilityCounter")
 
         results = open("results/DecreasingProbabilityCounter/" + book + ".txt", "w", encoding="utf-8")
         analysis = open("analysis/DecreasingProbabilityCounter/" + book + ".txt", "w", encoding="utf-8")
@@ -69,4 +69,4 @@ if __name__ == "__main__":
         analysis.write(f'{book + ":":<40} {avgTime / numTrials:<25}\n')
 
         analysis.close()
-        results.close()
+        results.close() 

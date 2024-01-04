@@ -1,0 +1,10 @@
+Top 4 letters (Exact Counter):
+ : 40476
+A: 36868
+I: 33876
+T: 28921
+
+Top 4 letters (Space Saving Counter):
+
+Accurate letters: 0/4
+Accuracy: 0.0%

@@ -1,0 +1,9 @@
+Top 2 letters (Exact Counter):
+ : 35266
+E: 26108
+
+Top 2 letters (Space Saving Counter):
+D: 1
+
+Accurate letters: 0/2
+Accuracy: 0.0%

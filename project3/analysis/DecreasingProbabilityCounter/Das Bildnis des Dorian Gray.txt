@@ -1,6 +1,1 @@
-title                                    K     Processing Time          
-Das Bildnis des Dorian Gray:                 3 0.05418801307678223      
-title                                    K     Processing Time          
-Das Bildnis des Dorian Gray:                 5 0.05418729782104492      
-title                                    K     Processing Time          
-Das Bildnis des Dorian Gray:                10 0.051177978515625        
+Das Bildnis des Dorian Gray:             0.3279966613769531       

@@ -1,6 +1,4 @@
 title                                    K     Processing Time          
-The Picture of Dorian Gray:                  3 0.04314613342285156      
-title                                    K     Processing Time          
-The Picture of Dorian Gray:                  5 0.04314994812011719      
-title                                    K     Processing Time          
-The Picture of Dorian Gray:                 10 0.04214620590209961      
+The Picture of Dorian Gray:              3     0.04114270210266113      
+The Picture of Dorian Gray:              5     0.043149709701538086     
+The Picture of Dorian Gray:              10    0.040139198303222656     

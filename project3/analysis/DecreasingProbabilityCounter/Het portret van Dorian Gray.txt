@@ -1,6 +1,1 @@
-title                                    K     Processing Time          
-Het portret van Dorian Gray:                 3 0.041141510009765625     
-title                                    K     Processing Time          
-Het portret van Dorian Gray:                 5 0.04214620590209961      
-title                                    K     Processing Time          
-Het portret van Dorian Gray:                10 0.03924083709716797      
+Het portret van Dorian Gray:             0.25223825203577677      

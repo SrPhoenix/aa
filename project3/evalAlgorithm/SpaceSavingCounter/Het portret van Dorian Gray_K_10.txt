@@ -1,0 +1,19 @@
+Top 9 letters (Exact Counter):
+E: 35080
+ : 31457
+N: 17327
+R: 13060
+O: 12924
+A: 12097
+I: 11695
+D: 10118
+T: 10095
+
+Top 9 letters (Space Saving Counter):
+ : 11688
+E: 15311
+N: 4
+R: 2
+
+Accurate letters: 4/9
+Accuracy: 44.44444444444444%
